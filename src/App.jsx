@@ -6,6 +6,44 @@ import styles from './App.module.css';
 
 import './global.css';
 
+//author: { avatar_url: "", name: "", role: ""}
+//publishedAt: Date
+//content: String
+
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: "https://media.licdn.com/dms/image/D4D03AQGzk-aHIn_AKw/profile-displayphoto-shrink_800_800/0/1694009510261?e=1728518400&v=beta&t=68yysRYDA62tVVkp7cVUlgu84RkKfzpMxkbK81Xs1Tc",
+      name: 'Michel Modesto',
+      role: 'Web Developer',
+    },
+    content: [
+      {type: 'paragraph', content: 'Fala galeraa 👋'},
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa.É um projeto que fiz no NLW   Return, evento da Rocketseat.O nome do projeto é DoctorCare 🚀'},
+
+      {type: 'link', content: 'paivinha.design/doctorcare'},
+   
+    ],
+    publishedAt: new Date('2024-08-28 20:00:00')
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: "https://media.licdn.com/dms/image/D4D03AQFIzLtnZEuq9A/profile-displayphoto-shrink_800_800/0/1695442047367?e=1728518400&v=beta&t=cH-bmXQBw9tLtgkFxZnGfatHbyC4ux2329DGOttjGe4",
+      name: 'Guilherme Paiva',
+      role: 'Design',
+    },
+    content: [
+      {type: 'paragraph', content: 'Fala galeraa 👋'},
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa.É um projeto que fiz no NLW   Return, evento da Rocketseat.O nome do projeto é DoctorCare 🚀'},
+
+      {type: 'link', content: 'paivinha.design/doctorcare'},
+   
+    ],
+    publishedAt: new Date('2024-09-01 23:00:00')
+  },
+];
 
 export function App() {
   return (
@@ -13,16 +51,18 @@ export function App() {
       <Header />
 
       <div className={styles.wrapper}>
-        <Sidebar/>
+        <Sidebar />
         <main>
-          <Post
-            author="Michel Modesto"
-            content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, vero ea fuga repudiandae autem, at, ducimus accusantium deleniti eaque tempore sequi maxime ut placeat earum aut cum. Reprehenderit, rerum fugit."
-          />
-          <Post
-            author="Gabriel Buzzi"
-            content="Um novo post muito legal"
-          />
+          {posts.map(post => {
+            return (
+            <Post 
+              author={post.author}
+              content={post.content}
+              publishedAt={post.publishedAt}
+            />
+            )
+          })}
+
         </main>
       </div>
     </div>
